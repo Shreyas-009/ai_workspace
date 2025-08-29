@@ -17,10 +17,9 @@ const App = () => {
 
     const savedMemory = localStorage.getItem("workspace-memory");
     if (savedMemory) {
-      setMemoryItems(JSON.parse(savedMemory));
-    } else {
-      const pinnedItems = workspaceData.filter((msg) => msg.pinned);
+      const pinnedItems = workspaceData.filter((msg) => msg.pinned == true);
       setMemoryItems(pinnedItems);
+      localStorage.setItem("workspace-memory", JSON.stringify(pinnedItems));
     }
   }, []);
 
